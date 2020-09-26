@@ -1,7 +1,7 @@
 # redm_moonshine_interiors
 - RDR3 Moonshiner shacks with configurable interiors
 - Teleports inside front doors
-- Interior sets load in when entering moonshine shack
+- Configurable Interior sets load in when entering moonshine shack (most efficient)
 
 # Installation
 1. Clone this repository.
@@ -11,6 +11,7 @@
 5. Profit
 
 # Configuration
+- Change interior sets to load in automatically (using own teleports)
 - Change interior sets per shack in config
 
 # Couldnt make without this awesome documentation
