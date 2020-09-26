@@ -133,8 +133,10 @@ end)
 
 AddEventHandler('onResourceStop', function(resource)
     if resource == GetCurrentResourceName() then
-        for k,v in pairs(Config.Shacks) do
-            RemoveBlip(blip[k])
+        if Config.Blips == true then
+            for k,v in pairs(Config.Shacks) do
+                RemoveBlip(blip[k])
+            end
         end
     end
 end)
