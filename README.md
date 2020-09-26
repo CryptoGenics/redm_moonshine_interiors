@@ -1,5 +1,7 @@
 # redm_moonshine_interiors
-RDR3 Moonshiner shacks with configurable interiors
+- RDR3 Moonshiner shacks with configurable interiors
+- Teleports inside front doors
+- Interior sets load in when entering moonshine shack
 
 # Installation
 1. Clone this repository.
