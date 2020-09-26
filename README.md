@@ -11,8 +11,8 @@
 5. Profit
 
 # Configuration
-- Change interior sets to load in automatically (using own teleports)
 - Change interior sets per shack in config
+- Disable teleports and have interiors load in on connecting to server
 
 # Couldnt make without this awesome documentation
 - https://github.com/femga
