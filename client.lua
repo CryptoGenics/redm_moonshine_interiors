@@ -17,7 +17,7 @@ RemoveImap(-2071756699) -- New Austin
 RemoveImap(-1809571159) -- Grizzlies
 
 local hasAlreadyEnteredMarker, currentZone = false, nil
-
+local blip = {}
 local PromptGorup = GetRandomIntInRange(0, 0xffffff)
 
 function SetupUseDoorPrompt()
@@ -34,18 +34,6 @@ function SetupUseDoorPrompt()
         PromptRegisterEnd(UseDoorPrompt)
     end)
 end
-
-AddEventHandler("playerSpawned", function(spawn)
-    if Config.UseTeleports == false then
-        for _,v in pairs(Config.Shacks) do
-            for _,r in pairs(v.interior_sets) do
-                if not IsInteriorEntitySetActive(v.interior, r) then
-                    ActivateInteriorEntitySet(v.interior, r)
-                end
-            end
-        end
-    end
-end)
 
 Citizen.CreateThread(function()
     SetupUseDoorPrompt()
@@ -120,3 +108,33 @@ function ZoneLoop(zone)
         until currentZone ~= zone
     end)
 end
+
+Citizen.CreateThread(function()
+    if Config.Blips == true then
+        for k,v in pairs(Config.Shacks) do
+            blip[k] = Citizen.InvokeNative(0x554d9d53f696d002, 1664425300, v.outside)
+            SetBlipSprite(blip[k], -392465725, 1)
+            Citizen.InvokeNative(0x9CB1A1623062F402, blip[k], 'Moonshine Shack')
+        end
+    end
+end)
+
+AddEventHandler("playerSpawned", function(spawn)
+    if Config.UseTeleports == false then
+        for _,v in pairs(Config.Shacks) do
+            for _,r in pairs(v.interior_sets) do
+                if not IsInteriorEntitySetActive(v.interior, r) then
+                    ActivateInteriorEntitySet(v.interior, r)
+                end
+            end
+        end
+    end
+end)
+
+AddEventHandler('onResourceStop', function(resource)
+    if resource == GetCurrentResourceName() then
+        for k,v in pairs(Config.Shacks) do
+            RemoveBlip(blip[k])
+        end
+    end
+end)
