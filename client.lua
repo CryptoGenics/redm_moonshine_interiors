@@ -19,7 +19,6 @@ RemoveImap(-1809571159) -- Grizzlies
 local hasAlreadyEnteredMarker, currentZone = false, nil
 
 local PromptGorup = GetRandomIntInRange(0, 0xffffff)
-local PromptName = 'Door'
 
 function SetupUseDoorPrompt()
     Citizen.CreateThread(function()
