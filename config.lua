@@ -1,5 +1,7 @@
 Config = {}
 
+Config.UseTeleports = true
+
 -- Change interior_sets with the interior you want at that location
 -- https://github.com/femga/rdr3_discoveries/blob/399df3278b5101af1044f205c045648d2c8bcb38/interiors/interior_sets/README.md
 

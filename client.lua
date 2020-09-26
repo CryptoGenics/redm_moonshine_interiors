@@ -36,9 +36,21 @@ function SetupUseDoorPrompt()
     end)
 end
 
+AddEventHandler("playerSpawned", function(spawn)
+    if Config.UseTeleports == false then
+        for _,v in pairs(Config.Shacks) do
+            for _,r in pairs(v.interior_sets) do
+                if not IsInteriorEntitySetActive(v.interior, r) then
+                    ActivateInteriorEntitySet(v.interior, r)
+                end
+            end
+        end
+    end
+end)
+
 Citizen.CreateThread(function()
     SetupUseDoorPrompt()
-    while true do
+    while Config.UseTeleports do
         Citizen.Wait(500)
         local player = PlayerPedId()
         local coords = GetEntityCoords(player)
